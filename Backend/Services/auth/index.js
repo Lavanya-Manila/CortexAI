@@ -1,13 +1,15 @@
 import express from "express";
 import dotenv from "dotenv";
+import connectDb from "./config/db.js";
 
 dotenv.config();
-const port = process.env.port
+const port = process.env.PORT
 
 const app = express()
 app.get("/", (req, res) => {
-    res.json({ message: "Gateway is running" });
+    res.json({ message: "Hello from auth" });
 });
 app.listen(port, () => {
-    console.log(`Gateway is running on port ${port}`);
+    console.log(`Auth service is running on port ${port}`);
+    connectDb();
 });

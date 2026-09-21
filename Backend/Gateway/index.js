@@ -5,6 +5,9 @@ dotenv.config();
 const port = process.env.port
 
 const app = express()
+
+app.use("/auth",proxy(process.env.AUTH_SERVICE));
+
 app.get("/", (req, res) => {
     res.json({ message: "Gateway is running" });
 });
